@@ -1,12 +1,53 @@
 body {
   margin: 0;
   height: 100vh;
+  background-image: url("assets/tr01.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100%;
 }
 canvas {
+  position: absolute;
+  top: 20px;
+
   display: block;
+
+  /* border: 100px solid rgb(255, 255, 255); */
 }
 h1 {
   position: absolute;
+}
+
+button {
+  background-color: transparent;
+  padding: 0;
+  margin: 40px;
+  vertical-align: top;
+  border: none;
+}
+
+.button:active {
+  background-color: transparent;
+  display: none;
+  color: transparent;
+  border: 0cm;
+}
+.titleB {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 300px;
+}
+.buttons {
+  text-align: center;
+  position: relative;
+}
+
+.returnBtn {
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
 }
 /* .triangleCanvas {
   position: relative;
@@ -23,11 +64,33 @@ h1 {
 } */
 #canvasCam {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 10px;
-  width: 180px;
-  height: 120px;
-  border-bottom: 4px solid #0063ff;
+  width: 280px;
+  height: 180px;
+  border: 5px solid white;
   border-radius: 3px;
   -webkit-transform: rotateY(180deg);
+}
+
+#defaultCanvas0 {
+  position: absolute;
+  right: 320px;
+  border: 5px solid white;
+}
+#p1 {
+  font-family: cursive;
+  background-image: linear-gradient(rgb(242, 92, 5), rgb(242, 159, 5));
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  border: 5px solid white;
+  color: rgb(255, 255, 255);
+}
+#timer {
+  font-family: cursive;
+  background-image: linear-gradient(rgb(18, 139, 166), rgb(170, 223, 225));
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  border: 5px solid white;
+  color: rgb(255, 255, 255);
 }

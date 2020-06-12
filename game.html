@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script> -->
+    <script src="https://unpkg.com/delaunator@4.0.1/delaunator.js"></script>
+    <div id="message">loading...</div>
+    <div style="position: absolute; top: 20px; left: 20px;">
+      <h2 id="p1">Toys: 0/4</h2>
+      <h2 id="timer">Timer: 02:00</h2>
+    </div>
+
+    <canvas id="canvasCam" class="border canvasbox"></canvas>
+    <video
+      id="webCam"
+      class="videobox canvasbox"
+      autoplay="autoplay"
+      style="display: none;"
+    ></video>
+    <button class="returnBtn" onclick="location.href='index.html'">
+      <img
+        src="assets/Group 12.png"
+        onmouseover="this.src='assets/Group 13.png'"
+        onmouseout="this.src='assets/Group 12.png'"
+      />
+    </button>
+  </body>
+
+  <script src="app.js"></script>
+</html>
