@@ -26,6 +26,29 @@ button {
   vertical-align: top;
   border: none;
 }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-decoration-color: whitesmoke;
+  font-family: cursive;
+  color: azure;
+}
+table,
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}
+table tr:nth-child(even) {
+  background-color: rgb(242, 92, 5);
+}
+table tr:nth-child(odd) {
+  background-color: rgb(18, 139, 166);
+}
+table th {
+  background-color: rgb(206, 206, 206);
+  color: black;
+}
 
 .button:active {
   background-color: transparent;
@@ -85,6 +108,23 @@ button {
   padding: 10px 10px 10px 10px;
   border: 5px solid white;
   color: rgb(255, 255, 255);
+}
+#gameover {
+  position: absolute;
+  width: 70%;
+  top: 20%;
+  left: 15%;
+}
+
+#gameover1 {
+  position: absolute;
+  border: 5px solid white;
+  top: 45%;
+  width: 30%;
+  left: 30%;
+}
+#num {
+  text-align: center;
 }
 #timer {
   font-family: cursive;

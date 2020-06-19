@@ -24,6 +24,8 @@ var pntsCntHeli = 0,
   pntsCntCar = 0,
   pntsCntParrot = 0,
   pntsCntTiger = 0,
+  pntsCntFlamingo = 0,
+  pntsCntPlane = 0,
   toysCnt = 0;
 var userName;
 let checked = true;
@@ -109,7 +111,7 @@ function runDetection() {
 }
 var delaunay = Delaunator.from(points);
 function preload() {
-  img = loadImage("imgs/redtoys.jpg");
+  img = loadImage("imgs/many.jpg");
   if (localStorage.getItem("Highscore") === null) {
     myJSON = JSON.stringify(myObj);
     localStorage.setItem("Highscore", myJSON);
@@ -146,7 +148,7 @@ function setup() {
       go.setAttribute("src", "assets/Group 33.png");
 
       var realImg = document.createElement("IMG");
-      realImg.setAttribute("src", "imgs/redtoys.jpg");
+      realImg.setAttribute("src", "imgs/many.jpg");
       realImg.setAttribute("id", "gameover1");
 
       document.body.appendChild(go);
@@ -168,48 +170,71 @@ function draw() {
   if (xCord != null && yCord != null) {
     tempX1 = int(map(video.width - xCord, 0, video.width, 0, img.width));
     tempY1 = int(map(yCord, 0, video.height, 0, img.height));
-    if (tempX1 > 418 && tempX1 < 761 && tempY1 > 403 && tempY1 < 556) {
-      if (pntsCntCar < 2500) {
+    if (tempX1 > 290 && tempX1 < 481 && tempY1 > 282 && tempY1 < 378) {
+      if (pntsCntCar < 800) {
         //car shalgah
         points.push([tempX1, tempY1]);
         delaunay = Delaunator.from(points);
         pntsCntCar++;
-        if (pntsCntCar == 2500) {
+        if (pntsCntCar == 800) {
           toysCnt++;
           s = "Congratulations! You have just found a RACECAR :D";
         }
       }
-    } else if (tempX1 > 830 && tempX1 < 1024 && tempY1 > 274 && tempY1 < 447) {
+    } else if (tempX1 > 343 && tempX1 < 522 && tempY1 > 450 && tempY1 < 614) {
       // tiger shalgah
-      if (pntsCntTiger < 1500) {
+      if (pntsCntTiger < 1000) {
         points.push([tempX1, tempY1]);
         delaunay = Delaunator.from(points);
         pntsCntTiger++;
-        if (pntsCntTiger == 1500) {
+        if (pntsCntTiger == 1000) {
           toysCnt++;
           s = "Congratulations! You have just found a TIGER :D";
         }
       }
-    } else if (tempX1 > 55 && tempX1 < 409 && tempY1 > 276 && tempY1 < 462) {
+    } else if (tempX1 > 720 && tempX1 < 980 && tempY1 > 70 && tempY1 < 205) {
       //helicopter shalgah
-      if (pntsCntHeli < 3000) {
+      if (pntsCntHeli < 1300) {
         points.push([tempX1, tempY1]);
         delaunay = Delaunator.from(points);
         pntsCntHeli++;
-        if (pntsCntHeli == 3000) {
+        if (pntsCntHeli == 1300) {
           toysCnt++;
           s = "Congratulations! You have just found a HELICOPTER :D";
         }
       }
-    } else if (tempX1 > 508 && tempX1 < 668 && tempY1 > 134 && tempY1 < 413) {
+    } else if (tempX1 > 430 && tempX1 < 560 && tempY1 > 30 && tempY1 < 220) {
       // parrot shalgah
-      if (pntsCntParrot < 2300) {
+      if (pntsCntParrot < 800) {
         points.push([tempX1, tempY1]);
         delaunay = Delaunator.from(points);
         pntsCntParrot++;
-        if (pntsCntParrot == 2300) {
+        if (pntsCntParrot == 800) {
           toysCnt++;
           s = "Congratulations! You have just found a PARROT :D";
+        }
+      }
+    } else if (tempX1 > 145 && tempX1 < 300 && tempY1 > 85 && tempY1 < 335) {
+      // flamingo shalgah
+      if (pntsCntFlamingo < 1500) {
+        points.push([tempX1, tempY1]);
+        delaunay = Delaunator.from(points);
+        pntsCntFlamingo++;
+        if (pntsCntFlamingo == 1500) {
+          toysCnt++;
+          s = "Congratulations! You have just found a FLAMINGO :D";
+        }
+      }
+    } else if (tempX1 > 645 && tempX1 < 950 && tempY1 > 220 && tempY1 < 460) {
+      // PLANE shalgah
+      if (pntsCntPlane < 1500) {
+        //
+        points.push([tempX1, tempY1]);
+        delaunay = Delaunator.from(points);
+        pntsCntPlane++;
+        if (pntsCntPlane == 1500) {
+          toysCnt++;
+          s = "Congratulations! You have just found a PLANE :D";
         }
       }
     } else {
@@ -220,48 +245,70 @@ function draw() {
   if (xCord2 != null && yCord2 != null) {
     tempX2 = int(map(video.width - xCord2, 0, video.width, 0, img.width));
     tempY2 = int(map(yCord2, 0, video.height, 0, img.height));
-    if (tempX2 > 418 && tempX2 < 761 && tempY2 > 403 && tempY2 < 556) {
-      if (pntsCntCar < 2500) {
+    if (tempX2 > 290 && tempX2 < 481 && tempY2 > 282 && tempY2 < 378) {
+      if (pntsCntCar < 800) {
         // car shalgah heseg
         points.push([tempX2, tempY2]);
         delaunay = Delaunator.from(points);
         pntsCntCar++;
-        if (pntsCntCar == 2500) {
+        if (pntsCntCar == 800) {
           toysCnt++;
           s = "Congratulations! You have just found a RACECAR :D";
         }
       }
-    } else if (tempX2 > 830 && tempX2 < 1024 && tempY2 > 274 && tempY2 < 447) {
+    } else if (tempX2 > 343 && tempX2 < 522 && tempY2 > 450 && tempY2 < 614) {
       // tiger shalgah
-      if (pntsCntTiger < 1500) {
+      if (pntsCntTiger < 1000) {
         points.push([tempX2, tempY2]);
         delaunay = Delaunator.from(points);
         pntsCntTiger++;
-        if (pntsCntTiger == 1500) {
+        if (pntsCntTiger == 1000) {
           toysCnt++;
           s = "Congratulations! You have just found a TIGER :D";
         }
       }
-    } else if (tempX2 > 55 && tempX2 < 409 && tempY2 > 276 && tempY2 < 462) {
+    } else if (tempX2 > 720 && tempX2 < 980 && tempY2 > 70 && tempY2 < 205) {
       //helicopter shalgah
-      if (pntsCntHeli < 3000) {
+      if (pntsCntHeli < 1500) {
         points.push([tempX2, tempY2]);
         delaunay = Delaunator.from(points);
         pntsCntHeli++;
-        if (pntsCntHeli == 3000) {
+        if (pntsCntHeli == 1500) {
           toysCnt++;
           s = "Congratulations! You have just found a HELICOPTER :D";
         }
       }
-    } else if (tempX2 > 508 && tempX2 < 668 && tempY2 > 134 && tempY2 < 413) {
+    } else if (tempX2 > 430 && tempX2 < 560 && tempY2 > 30 && tempY2 < 220) {
       // parrot shalgah
-      if (pntsCntParrot < 2300) {
+      if (pntsCntParrot < 800) {
         points.push([tempX2, tempY2]);
         delaunay = Delaunator.from(points);
         pntsCntParrot++;
-        if (pntsCntParrot == 2300) {
+        if (pntsCntParrot == 800) {
           toysCnt++;
           s = "Congratulations! You have just found a PARROT :D";
+        }
+      }
+    } else if (tempX2 > 145 && tempX2 < 300 && tempY2 > 85 && tempY2 < 335) {
+      // flamingo shalgah
+      if (pntsCntFlamingo < 1500) {
+        points.push([tempX2, tempY2]);
+        delaunay = Delaunator.from(points);
+        pntsCntFlamingo++;
+        if (pntsCntFlamingo == 1500) {
+          toysCnt++;
+          s = "Congratulations! You have just found a FLAMINGO :D";
+        }
+      }
+    } else if (tempX2 > 645 && tempX2 < 950 && tempY2 > 220 && tempY2 < 460) {
+      // plane shalgah
+      if (pntsCntPlane < 1500) {
+        points.push([tempX2, tempY2]);
+        delaunay = Delaunator.from(points);
+        pntsCntPlane++;
+        if (pntsCntPlane == 1500) {
+          toysCnt++;
+          s = "Congratulations! You have just found a PLANE :D";
         }
       }
     } else {
@@ -295,7 +342,7 @@ function draw() {
   }
   console.log(points.length);
 
-  document.getElementById("p1").innerHTML = "Toys: " + toysCnt + "/4";
+  document.getElementById("p1").innerHTML = "Toys: " + toysCnt + "/6";
   let htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
 
   txtFromLocal = localStorage.getItem("Highscore");
@@ -357,48 +404,70 @@ function mouseDragged() {
     mouseY <= buffer.height &&
     mouseY >= 0
   ) {
-    if (mouseX > 418 && mouseX < 761 && mouseY > 403 && mouseY < 556) {
-      if (pntsCntCar < 2500) {
+    if (mouseX > 290 && mouseX < 481 && mouseY > 282 && mouseY < 378) {
+      if (pntsCntCar < 800) {
         // car shalgah heseg
         points.push([mouseX, mouseY]);
         delaunay = Delaunator.from(points);
         pntsCntCar++;
-        if (pntsCntCar == 2500) {
+        if (pntsCntCar == 800) {
           toysCnt++;
           s = "Congratulations! You have just found a RACECAR :D";
         }
       }
-    } else if (mouseX > 830 && mouseX < 1024 && mouseY > 274 && mouseY < 447) {
+    } else if (mouseX > 343 && mouseX < 522 && mouseY > 450 && mouseY < 614) {
       // tiger shalgah
-      if (pntsCntTiger < 1500) {
+      if (pntsCntTiger < 1000) {
         points.push([mouseX, mouseY]);
         delaunay = Delaunator.from(points);
         pntsCntTiger++;
-        if (pntsCntTiger == 1500) {
+        if (pntsCntTiger == 1000) {
           toysCnt++;
           s = "Congratulations! You have just found a TIGER :D";
         }
       }
-    } else if (mouseX > 55 && mouseX < 409 && mouseY > 276 && mouseY < 462) {
+    } else if (mouseX > 720 && mouseX < 980 && mouseY > 70 && mouseY < 205) {
       //helicopter shalgah
-      if (pntsCntHeli < 3000) {
+      if (pntsCntHeli < 1500) {
         points.push([mouseX, mouseY]);
         delaunay = Delaunator.from(points);
         pntsCntHeli++;
-        if (pntsCntHeli == 3000) {
+        if (pntsCntHeli == 1500) {
           toysCnt++;
           s = "Congratulations! You have just found a HELICOPTER :D";
         }
       }
-    } else if (mouseX > 508 && mouseX < 668 && mouseY > 134 && mouseY < 413) {
+    } else if (mouseX > 430 && mouseX < 560 && mouseY > 30 && mouseY < 220) {
       // parrot shalgah
-      if (pntsCntParrot < 2300) {
+      if (pntsCntParrot < 800) {
         points.push([mouseX, mouseY]);
         delaunay = Delaunator.from(points);
         pntsCntParrot++;
-        if (pntsCntParrot == 2300) {
+        if (pntsCntParrot == 800) {
           toysCnt++;
           s = "Congratulations! You have just found a PARROT :D";
+        }
+      }
+    } else if (mouseX > 145 && mouseX < 300 && mouseY > 85 && mouseY < 335) {
+      // flamingo shalgah
+      if (pntsCntFlamingo < 1500) {
+        points.push([mouseX, mouseY]);
+        delaunay = Delaunator.from(points);
+        pntsCntFlamingo++;
+        if (pntsCntFlamingo == 1500) {
+          toysCnt++;
+          s = "Congratulations! You have just found a FLAMINGO :D";
+        }
+      }
+    } else if (mouseX > 645 && mouseX < 950 && mouseY > 220 && mouseY < 460) {
+      // plane shalgah
+      if (pntsCntPlane < 1500) {
+        points.push([mouseX, mouseY]);
+        delaunay = Delaunator.from(points);
+        pntsCntPlane++;
+        if (pntsCntPlane == 1500) {
+          toysCnt++;
+          s = "Congratulations! You have just found a PLANE :D";
         }
       }
     } else {
