@@ -134,3 +134,18 @@ table th {
   border: 5px solid white;
   color: rgb(255, 255, 255);
 }
+.left {
+  position: fixed;
+  left: 20px;
+  width: 300px;
+}
+
+.left img {
+  width: 100%;
+}
+@media only screen and (max-width: 1632px) {
+  /* For mobile phones: */
+  .left {
+    bottom: 20px;
+  }
+}
