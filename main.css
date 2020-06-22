@@ -10,13 +10,8 @@ body {
 canvas {
   position: absolute;
   top: 20px;
-
   display: block;
-
   /* border: 100px solid rgb(255, 255, 255); */
-}
-h1 {
-  position: absolute;
 }
 
 button {
@@ -72,19 +67,7 @@ table th {
   bottom: 1%;
   right: 1%;
 }
-/* .triangleCanvas {
-  position: relative;
-} */
 
-/* .video {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 150px; */
-/* height: 120px;
-  border-bottom: 4px solid #0063ff;
-  border-radius: 3px;
-} */
 #canvasCam {
   position: absolute;
   top: 20px;
@@ -101,14 +84,7 @@ table th {
   right: 320px;
   border: 5px solid white;
 }
-#p1 {
-  font-family: cursive;
-  background-image: linear-gradient(rgb(242, 92, 5), rgb(242, 159, 5));
-  text-align: center;
-  padding: 10px 10px 10px 10px;
-  border: 5px solid white;
-  color: rgb(255, 255, 255);
-}
+
 #gameover {
   position: absolute;
   width: 70%;
@@ -126,12 +102,25 @@ table th {
 #num {
   text-align: center;
 }
+#p1 {
+  font-family: cursive;
+  background-image: linear-gradient(rgb(242, 92, 5), rgb(242, 159, 5));
+  text-align: center;
+  padding: 3px 3px 3px 3px;
+  color: rgb(255, 255, 255);
+}
 #timer {
   font-family: cursive;
   background-image: linear-gradient(rgb(18, 139, 166), rgb(170, 223, 225));
   text-align: center;
-  padding: 10px 10px 10px 10px;
-  border: 5px solid white;
+  padding: 3px 3px 3px 3px;
+  color: rgb(255, 255, 255);
+}
+#highS {
+  font-family: cursive;
+  background-image: linear-gradient(rgb(90, 90, 90), rgb(41, 41, 41));
+  text-align: center;
+  padding: 3px 3px 3px 3px;
   color: rgb(255, 255, 255);
 }
 .left {
@@ -140,12 +129,9 @@ table th {
   width: 300px;
 }
 
-.left img {
-  width: 100%;
-}
 @media only screen and (max-width: 1632px) {
   /* For mobile phones: */
   .left {
-    bottom: 20px;
+    bottom: 5px;
   }
 }
