@@ -28,7 +28,7 @@ var pntsCntHeli = 0,
 var userName;
 let checked = true;
 var counter = 0;
-var timeLeft = 120;
+var timeLeft = 150;
 var output, txtFromLocal, obj, obj1;
 let img, s;
 let pix = [];

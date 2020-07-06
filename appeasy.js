@@ -129,7 +129,8 @@ function convertSeconds1(s) {
 }
 function setup() {
   buffer = createGraphics(img.width, img.height);
-  createCanvas(img.width, img.height);
+  let cnv = createCanvas(img.width, img.height);
+  cnv.parent("myContainer");
   var timer = select("#timer");
   timer.html(convertSeconds(timeLeft - counter));
   var interval = setInterval(timeIt, 1000);

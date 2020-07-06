@@ -30,7 +30,7 @@ var pntsCntHeli = 0,
 var userName;
 let checked = true;
 var counter = 0;
-var timeLeft = 120;
+var timeLeft = 180;
 var output, txtFromLocal, obj, obj1;
 let img, s;
 let pix = [];
@@ -133,7 +133,8 @@ function convertSeconds1(s) {
 }
 function setup() {
   buffer = createGraphics(img.width, img.height);
-  createCanvas(img.width, img.height);
+  let cnv = createCanvas(img.width, img.height);
+  cnv.parent("myContainer");
   var timer = select("#timer");
   timer.html(convertSeconds(timeLeft - counter));
   var interval = setInterval(timeIt, 1000);
