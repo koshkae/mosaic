@@ -131,7 +131,8 @@ function convertSeconds1(s) {
 }
 function setup() {
   buffer = createGraphics(img.width, img.height);
-  createCanvas(img.width, img.height);
+  let cnv = createCanvas(img.width, img.height);
+  cnv.parent("myContainer");
   var timer = select("#timer");
   timer.html(convertSeconds(timeLeft - counter));
   var interval = setInterval(timeIt, 1000);
@@ -166,7 +167,7 @@ function draw() {
   var tempX1, tempX2, tempY1, tempY2;
 
   if (xCord != null && yCord != null) {
-    tempX1 = int(map(video.width - xCord, 0, video.width, 0, img.width));
+    tempX1 = int(map(xCord, 0, video.width, 0, img.width));
     tempY1 = int(map(yCord, 0, video.height, 0, img.height));
     if (tempX1 > 418 && tempX1 < 761 && tempY1 > 403 && tempY1 < 556) {
       if (pntsCntCar < 2500) {
@@ -218,7 +219,7 @@ function draw() {
     }
   }
   if (xCord2 != null && yCord2 != null) {
-    tempX2 = int(map(video.width - xCord2, 0, video.width, 0, img.width));
+    tempX2 = int(map(xCord2, 0, video.width, 0, img.width));
     tempY2 = int(map(yCord2, 0, video.height, 0, img.height));
     if (tempX2 > 418 && tempX2 < 761 && tempY2 > 403 && tempY2 < 556) {
       if (pntsCntCar < 2500) {

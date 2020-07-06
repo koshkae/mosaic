@@ -168,7 +168,7 @@ function draw() {
   var tempX1, tempX2, tempY1, tempY2;
 
   if (xCord != null && yCord != null) {
-    tempX1 = int(map(video.width - xCord, 0, video.width, 0, img.width));
+    tempX1 = int(map(xCord, 0, video.width, 0, img.width));
     tempY1 = int(map(yCord, 0, video.height, 0, img.height));
     if (tempX1 > 290 && tempX1 < 481 && tempY1 > 282 && tempY1 < 378) {
       if (pntsCntCar < 800) {
@@ -243,7 +243,7 @@ function draw() {
     }
   }
   if (xCord2 != null && yCord2 != null) {
-    tempX2 = int(map(video.width - xCord2, 0, video.width, 0, img.width));
+    tempX2 = int(map(xCord2, 0, video.width, 0, img.width));
     tempY2 = int(map(yCord2, 0, video.height, 0, img.height));
     if (tempX2 > 290 && tempX2 < 481 && tempY2 > 282 && tempY2 < 378) {
       if (pntsCntCar < 800) {
