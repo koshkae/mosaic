@@ -29,6 +29,7 @@ var userName;
 let checked = true;
 var counter = 0;
 var timeLeft = 150;
+var countTimeBy2sec = 12;
 var output, txtFromLocal, obj, obj1;
 let img, s;
 let pix = [];
@@ -66,7 +67,6 @@ handTrack.load(modelParams).then((lmodel) => {
 
 function startVideo() {
   handTrack.startVideo(video).then(function (status) {
-    // console.log("video started", status);
     if (status) {
       updateNote.innerText = "";
       videoLoaded = true;
@@ -114,7 +114,7 @@ function preload() {
     myJSON = JSON.stringify(myObj);
     localStorage.setItem("Highscore", myJSON);
   } else {
-    console.log("yes");
+    console.log("yes urid ni togolj bsan bj taarlaa l daa");
   }
 }
 
@@ -270,6 +270,23 @@ function draw() {
       delaunay = Delaunator.from(points);
     }
   }
+  //2 secondiin daraa 5 tseg ustgah
+  if (counter == countTimeBy2sec) {
+    if (points.length > 5) {
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      delaunay = Delaunator.from(points);
+      countTimeBy2sec = countTimeBy2sec + 1;
+    }
+  }
   var triangles = delaunay.triangles;
   buffer.noStroke();
 
@@ -294,7 +311,7 @@ function draw() {
   if (xCord2 != null && yCord2 != null) {
     ellipse(tempX2, tempY2, width / 12);
   }
-  console.log(points.length);
+  // console.log(points.length);  tsegiin toog hevlej harah
 
   document.getElementById("p1").innerHTML = "Toys: " + toysCnt + "/4";
   let htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
