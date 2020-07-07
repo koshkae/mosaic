@@ -6,11 +6,11 @@ let updateNote = document.getElementById("message");
 let x, y;
 var num = 5;
 var points = [
-  [0, 0],
-  [0, 648],
-  [1079, 0],
-  [500, 300],
-  [1079, 647],
+  [500, 250],
+  [520, 348],
+  [679, 400],
+  [510, 330],
+  [512, 447],
 ];
 var myObj = {
   score: [
@@ -325,18 +325,12 @@ function draw() {
       points.shift();
       points.shift();
       points.shift();
-      points.shift();
-      points.shift();
-      points.shift();
-      points.shift();
-      points.shift();
-      delaunay = Delaunator.from(points);
-      countTimeBy2sec = countTimeBy2sec + 1;
     }
+    delaunay = Delaunator.from(points);
+    countTimeBy2sec = countTimeBy2sec + 1;
   }
   var triangles = delaunay.triangles;
   buffer.noStroke();
-
   for (let i = 0; i < triangles.length; i += 3) {
     var ii = points[triangles[i]][0];
     var jj = points[triangles[i]][1];
@@ -351,6 +345,7 @@ function draw() {
     );
   }
   image(buffer, 0, 0);
+  buffer.clear();
   noFill();
   if (xCord != null && yCord != null) {
     ellipse(tempX1, tempY1, width / 12);

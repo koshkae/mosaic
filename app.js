@@ -6,11 +6,11 @@ let updateNote = document.getElementById("message");
 let x, y;
 var num = 5;
 var points = [
-  [0, 0],
-  [0, 648],
-  [1079, 0],
-  [500, 300],
-  [1079, 647],
+  [500, 250],
+  [520, 348],
+  [679, 400],
+  [510, 330],
+  [512, 447],
 ];
 var myObj = {
   score: [
@@ -270,9 +270,9 @@ function draw() {
       delaunay = Delaunator.from(points);
     }
   }
-  //2 secondiin daraa 5 tseg ustgah
+  //2 secondiin daraa 7 tseg ustgah
   if (counter == countTimeBy2sec) {
-    if (points.length > 5) {
+    if (points.length > 7) {
       points.shift();
       points.shift();
       points.shift();
@@ -280,16 +280,13 @@ function draw() {
       points.shift();
       points.shift();
       points.shift();
-      points.shift();
-      points.shift();
-      points.shift();
-      delaunay = Delaunator.from(points);
-      countTimeBy2sec = countTimeBy2sec + 1;
     }
+    delaunay = Delaunator.from(points);
+    countTimeBy2sec = countTimeBy2sec + 1;
   }
   var triangles = delaunay.triangles;
   buffer.noStroke();
-
+  buffer.clear();
   for (let i = 0; i < triangles.length; i += 3) {
     var ii = points[triangles[i]][0];
     var jj = points[triangles[i]][1];
