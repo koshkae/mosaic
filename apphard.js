@@ -14,9 +14,15 @@ var points = [
 ];
 var myObj = {
   score: [
-    { name: "name", time: "02:00", level: "none", sec: "120" },
-    { name: "name", time: "02:00", level: "none", sec: "120" },
-    { name: "name", time: "02:00", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
   ],
 };
 var myJSON;
@@ -27,6 +33,12 @@ var pntsCntHeli = 0,
   pntsCntFlamingo = 0,
   pntsCntPlane = 0,
   toysCnt = 0;
+let carBool = false,
+  tigerBool = false,
+  heliBool = false,
+  flamingoBool = false,
+  planeBool = false,
+  parrotBool = false;
 var userName;
 let checked = true;
 var counter = 0;
@@ -40,7 +52,7 @@ let renderVideo = true,
   videoLoaded = false;
 let model = null;
 let xCord, yCord, xCord2, yCord2;
-
+let dSize = 4;
 window.onload = function () {
   var txt;
   var person = prompt("Please enter your name:", "Guest");
@@ -116,7 +128,10 @@ function preload() {
     myJSON = JSON.stringify(myObj);
     localStorage.setItem("Highscore", myJSON);
   } else {
-    console.log("yes bsan ");
+    if (myObj.score.length != 9) {
+      myJSON = JSON.stringify(myObj);
+      localStorage.setItem("Highscore", myJSON);
+    } else console.log("yes umnu ni togloj bsan bna ");
   }
 }
 
@@ -167,52 +182,103 @@ function draw() {
   background(204);
 
   var tempX1, tempX2, tempY1, tempY2;
-
   if (xCord != null && yCord != null) {
     tempX1 = int(map(xCord, 0, video.width, 0, img.width));
     tempY1 = int(map(yCord, 0, video.height, 0, img.height));
     if (tempX1 > 290 && tempX1 < 481 && tempY1 > 282 && tempY1 < 378) {
       if (pntsCntCar < 800) {
         //car shalgah
-        points.push([tempX1, tempY1]);
-        delaunay = Delaunator.from(points);
-        pntsCntCar++;
-        if (pntsCntCar == 800) {
-          toysCnt++;
-          s = "Congratulations! You have just found a RACECAR :D";
+        if (!points.includes([tempX1, tempY1])) {
+          points.push([tempX1, tempY1]);
+          pntsCntCar++;
+        }
+        if (!points.includes([tempX1 - dSize, tempY1])) {
+          points.push([tempX1 - dSize, tempY1]);
+          pntsCntCar++;
+        }
+        if (!points.includes([tempX1 + dSize, tempY1])) {
+          points.push([tempX1 + dSize, tempY1]);
+          pntsCntCar++;
+        }
+        if (!points.includes([tempX1, tempY1 - dSize])) {
+          points.push([tempX1, tempY1 - dSize]);
+          pntsCntCar++;
+        }
+        if (!points.includes([tempX1, tempY1 + dSize])) {
+          points.push([tempX1, tempY1 + dSize]);
+          pntsCntCar++;
         }
       }
     } else if (tempX1 > 343 && tempX1 < 522 && tempY1 > 450 && tempY1 < 614) {
       // tiger shalgah
       if (pntsCntTiger < 1000) {
-        points.push([tempX1, tempY1]);
-        delaunay = Delaunator.from(points);
-        pntsCntTiger++;
-        if (pntsCntTiger == 1000) {
-          toysCnt++;
-          s = "Congratulations! You have just found a TIGER :D";
+        if (!points.includes([tempX1, tempY1])) {
+          points.push([tempX1, tempY1]);
+          pntsCntTiger++;
+        }
+        if (!points.includes([tempX1 - dSize, tempY1])) {
+          points.push([tempX1 - dSize, tempY1]);
+          pntsCntTiger++;
+        }
+        if (!points.includes([tempX1 + dSize, tempY1])) {
+          points.push([tempX1 + dSize, tempY1]);
+          pntsCntTiger++;
+        }
+        if (!points.includes([tempX1, tempY1 - dSize])) {
+          points.push([tempX1, tempY1 - dSize]);
+          pntsCntTiger++;
+        }
+        if (!points.includes([tempX1, tempY1 + dSize])) {
+          points.push([tempX1, tempY1 + dSize]);
+          pntsCntTiger++;
         }
       }
     } else if (tempX1 > 720 && tempX1 < 980 && tempY1 > 70 && tempY1 < 205) {
       //helicopter shalgah
       if (pntsCntHeli < 1300) {
-        points.push([tempX1, tempY1]);
-        delaunay = Delaunator.from(points);
-        pntsCntHeli++;
-        if (pntsCntHeli == 1300) {
-          toysCnt++;
-          s = "Congratulations! You have just found a HELICOPTER :D";
+        if (!points.includes([tempX1, tempY1])) {
+          points.push([tempX1, tempY1]);
+          pntsCntHeli++;
+        }
+        if (!points.includes([tempX1 - dSize, tempY1])) {
+          points.push([tempX1 - dSize, tempY1]);
+          pntsCntHeli++;
+        }
+        if (!points.includes([tempX1 + dSize, tempY1])) {
+          points.push([tempX1 + dSize, tempY1]);
+          pntsCntHeli++;
+        }
+        if (!points.includes([tempX1, tempY1 - dSize])) {
+          points.push([tempX1, tempY1 - dSize]);
+          pntsCntHeli++;
+        }
+        if (!points.includes([tempX1, tempY1 + dSize])) {
+          points.push([tempX1, tempY1 + dSize]);
+          pntsCntHeli++;
         }
       }
     } else if (tempX1 > 430 && tempX1 < 560 && tempY1 > 30 && tempY1 < 220) {
       // parrot shalgah
       if (pntsCntParrot < 800) {
-        points.push([tempX1, tempY1]);
-        delaunay = Delaunator.from(points);
-        pntsCntParrot++;
-        if (pntsCntParrot == 800) {
-          toysCnt++;
-          s = "Congratulations! You have just found a PARROT :D";
+        if (!points.includes([tempX1, tempY1])) {
+          points.push([tempX1, tempY1]);
+          pntsCntParrot++;
+        }
+        if (!points.includes([tempX1 - dSize, tempY1])) {
+          points.push([tempX1 - dSize, tempY1]);
+          pntsCntParrot++;
+        }
+        if (!points.includes([tempX1 + dSize, tempY1])) {
+          points.push([tempX1 + dSize, tempY1]);
+          pntsCntParrot++;
+        }
+        if (!points.includes([tempX1, tempY1 - dSize])) {
+          points.push([tempX1, tempY1 - dSize]);
+          pntsCntParrot++;
+        }
+        if (!points.includes([tempX1, tempY1 + dSize])) {
+          points.push([tempX1, tempY1 + dSize]);
+          pntsCntParrot++;
         }
       }
     } else if (tempX1 > 145 && tempX1 < 300 && tempY1 > 85 && tempY1 < 335) {
@@ -325,10 +391,28 @@ function draw() {
       points.shift();
       points.shift();
       points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
     }
     delaunay = Delaunator.from(points);
     countTimeBy2sec = countTimeBy2sec + 1;
   }
+
+  if (pntsCntTiger == 1000 && !tigerBool) {
+    toysCnt++;
+    tigerBool = true;
+    s = "You have just found a TIGER :D";
+  }
+  if (pntsCntParrot == 2700 && !parrotBool) {
+    toysCnt++;
+    parrotBool = true;
+    s = "You have just found a PARROT :D";
+  }
+  delaunay = Delaunator.from(points);
+
   var triangles = delaunay.triangles;
   buffer.noStroke();
   for (let i = 0; i < triangles.length; i += 3) {
@@ -361,7 +445,7 @@ function draw() {
   txtFromLocal = localStorage.getItem("Highscore");
   obj = JSON.parse(txtFromLocal);
   obj1 = JSON.parse(txtFromLocal);
-  for (var num = 0; num < 3; num++) {
+  for (var num = 0; num < 9; num++) {
     htTxt =
       htTxt +
       "<tr><td id='num'>" +
@@ -382,15 +466,16 @@ function draw() {
   document.getElementById("highscore").innerHTML =
     "<table>" + htTxt + "</table>";
   if (toysCnt == 2) {
-    for (var num = 0; num < 3; num++) {
+    for (var num = 0; num < 9; num++) {
       if (checked) {
         if (counter < int(obj.score[num].sec)) {
-          if (num + 1 < 3) {
-            for (var aaaa = num + 1; aaaa < 3; aaaa++) {
-              myObj.score[aaaa].name = myObj.score[num].name;
-              myObj.score[aaaa].time = myObj.score[num].time;
-              myObj.score[aaaa].level = myObj.score[num].level;
-              myObj.score[aaaa].sec = myObj.score[num].sec;
+          let tempObj = obj;
+          if (num + 1 < 9) {
+            for (var aaaa = num + 1; aaaa < 9; aaaa++) {
+              myObj.score[aaaa].name = tempObj.score[aaaa - 1].name;
+              myObj.score[aaaa].time = tempObj.score[aaaa - 1].time;
+              myObj.score[aaaa].level = tempObj.score[aaaa - 1].level;
+              myObj.score[aaaa].sec = tempObj.score[aaaa - 1].sec;
             }
           }
           myObj.score[num].name = userName;
