@@ -40,7 +40,7 @@ let checked = true;
 var counter = 0;
 var timeLeft = 150;
 var countTimeBy2sec = 12;
-var output, txtFromLocal, obj, obj1;
+var output, txtFromLocal, obj;
 let img, s;
 let pix = [];
 var buffer, videoCanvas;
@@ -60,7 +60,7 @@ window.onload = function () {
   userName = txt;
   s = "Good luck " + userName + "!";
 };
-var output, txtFromLocal, obj, obj1;
+var output, txtFromLocal, obj;
 const modelParams = {
   flipHorizontal: true, // flip e.g for video
   maxNumBoxes: 2, // maximum number of boxes to detect
@@ -124,7 +124,9 @@ function preload() {
     myJSON = JSON.stringify(myObj);
     localStorage.setItem("Highscore", myJSON);
   } else {
-    if (myObj.score.length != 9) {
+    txtFromLocal = localStorage.getItem("Highscore");
+    obj = JSON.parse(txtFromLocal);
+    if (obj.score.length != 9) {
       myJSON = JSON.stringify(myObj);
       localStorage.setItem("Highscore", myJSON);
     } else console.log("yes umnu ni togloj bsan bna ");
@@ -472,7 +474,6 @@ function draw() {
 
   txtFromLocal = localStorage.getItem("Highscore");
   obj = JSON.parse(txtFromLocal);
-  obj1 = JSON.parse(txtFromLocal);
   for (var num = 0; num < 9; num++) {
     htTxt =
       htTxt +
