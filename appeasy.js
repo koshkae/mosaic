@@ -14,15 +14,15 @@ var points = [
 ];
 var myObj = {
   score: [
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
-    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "180" },
   ],
 };
 var myJSON;
@@ -403,8 +403,8 @@ function draw() {
 
           myJSON = JSON.stringify(myObj);
           localStorage.setItem("Highscore", myJSON);
-          checked = false;
         }
+        checked = false;
       }
     }
   }
