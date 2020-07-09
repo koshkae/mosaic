@@ -14,15 +14,15 @@ var points = [
 ];
 var myObj = {
   score: [
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
   ],
 };
 var myJSON;
@@ -180,7 +180,7 @@ function draw() {
     tempX1 = int(map(xCord, 0, video.width, 0, img.width));
     tempY1 = int(map(yCord, 0, video.height, 0, img.height));
     if (tempX1 > 278 && tempX1 < 494 && tempY1 > 321 && tempY1 < 502) {
-      if (pntsCntTiger < 2000) {
+      if (pntsCntTiger < 2200) {
         //tiger shalgah
         if (!points.includes([tempX1, tempY1])) {
           points.push([tempX1, tempY1]);
@@ -205,7 +205,7 @@ function draw() {
       }
     } else if (tempX1 > 533 && tempX1 < 736 && tempY1 > 202 && tempY1 < 489) {
       // parrot shalgah
-      if (pntsCntParrot < 2700) {
+      if (pntsCntParrot < 2800) {
         if (!points.includes([tempX1, tempY1])) {
           points.push([tempX1, tempY1]);
           pntsCntParrot++;
@@ -243,7 +243,7 @@ function draw() {
     tempX2 = int(map(xCord2, 0, video.width, 0, img.width));
     tempY2 = int(map(yCord2, 0, video.height, 0, img.height));
     if (tempX2 > 278 && tempX2 < 494 && tempY2 > 321 && tempY2 < 502) {
-      if (pntsCntTiger < 2000) {
+      if (pntsCntTiger < 2200) {
         // TIGER shalgah heseg
         if (!points.includes([tempX2, tempY2])) {
           points.push([tempX2, tempY2]);
@@ -268,7 +268,7 @@ function draw() {
       }
     } else if (tempX2 > 533 && tempX2 < 736 && tempY2 > 202 && tempY2 < 489) {
       // PARROT shalgah
-      if (pntsCntParrot < 2700) {
+      if (pntsCntParrot < 2800) {
         if (!points.includes([tempX2, tempY2])) {
           points.push([tempX2, tempY2]);
           pntsCntParrot++;
@@ -316,15 +316,14 @@ function draw() {
       points.shift();
       points.shift();
     }
-    delaunay = Delaunator.from(points);
     countTimeBy2sec = countTimeBy2sec + 1;
   }
-  if (pntsCntTiger == 2000 && !tigerBool) {
+  if (pntsCntTiger == 2200 && !tigerBool) {
     toysCnt++;
     tigerBool = true;
     s = "You have just found a TIGER :D";
   }
-  if (pntsCntParrot == 2700 && !parrotBool) {
+  if (pntsCntParrot == 2800 && !parrotBool) {
     toysCnt++;
     parrotBool = true;
     s = "You have just found a PARROT :D";

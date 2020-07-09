@@ -14,15 +14,15 @@ var points = [
 ];
 var myObj = {
   score: [
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
-    { name: "name", time: "- sec", level: "none", sec: "180" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
+    { name: "name", time: "- sec", level: "none", sec: "120" },
   ],
 };
 var myJSON;
@@ -514,7 +514,6 @@ function draw() {
       points.shift();
       points.shift();
     }
-    delaunay = Delaunator.from(points);
     countTimeBy2sec = countTimeBy2sec + 1;
   }
 
@@ -607,7 +606,7 @@ function draw() {
   if (toysCnt == 6) {
     for (var num = 0; num < 9; num++) {
       if (checked) {
-        if (counter < int(obj.score[num].sec)) {
+        if (counter - 60 < int(obj.score[num].sec)) {
           let tempObj = obj;
           if (num + 1 < 9) {
             for (var aaaa = num + 1; aaaa < 9; aaaa++) {
@@ -621,7 +620,6 @@ function draw() {
           myObj.score[num].time = convertSeconds1(counter);
           myObj.score[num].level = "Hard";
           myObj.score[num].sec = counter;
-
           myJSON = JSON.stringify(myObj);
           localStorage.setItem("Highscore", myJSON);
         }
