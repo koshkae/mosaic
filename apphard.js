@@ -622,8 +622,8 @@ function draw() {
           myObj.score[num].sec = counter;
           myJSON = JSON.stringify(myObj);
           localStorage.setItem("Highscore", myJSON);
+          checked = false;
         }
-        checked = false;
       }
     }
   }

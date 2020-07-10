@@ -385,6 +385,8 @@ function draw() {
     for (var num = 0; num < 9; num++) {
       if (checked) {
         //console.log(obj.score.length);
+        console.log(int(obj.score[num].sec));
+        console.log(counter);
         if (counter < int(obj.score[num].sec)) {
           let tempObj = obj;
           if (num + 1 < 9) {
@@ -401,8 +403,8 @@ function draw() {
           myObj.score[num].sec = counter;
           myJSON = JSON.stringify(myObj);
           localStorage.setItem("Highscore", myJSON);
+          checked = false;
         }
-        checked = false;
       }
     }
   }
@@ -418,7 +420,7 @@ function mouseDragged() {
     mouseY >= dSize
   ) {
     if (mouseX > 278 && mouseX < 494 && mouseY > 321 && mouseY < 502) {
-      if (pntsCntTiger < 2000) {
+      if (pntsCntTiger < 2200) {
         // TIGER shalgah heseg
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
@@ -443,7 +445,7 @@ function mouseDragged() {
       }
     } else if (mouseX > 533 && mouseX < 736 && mouseY > 202 && mouseY < 489) {
       // PARROT shalgah
-      if (pntsCntParrot < 2700) {
+      if (pntsCntParrot < 2800) {
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
           pntsCntParrot++;
