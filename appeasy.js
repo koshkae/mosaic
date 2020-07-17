@@ -31,6 +31,7 @@ var pntsCntTiger = 0,
   toysCnt = 0;
 let tigerBool = false,
   parrotBool = false;
+let tigerPng, parrotPng;
 var userName;
 let checked = true;
 var counter = 0;
@@ -114,9 +115,11 @@ function runDetection() {
     }
   });
 }
-var delaunay = Delaunator.from(points);
+var delaunay;
 function preload() {
   img = loadImage("imgs/easy01.jpg");
+  tigerPng = loadImage("pngs/easy1.png");
+  parrotPng = loadImage("pngs/easy2.png");
   if (localStorage.getItem("Highscore") === null) {
     myJSON = JSON.stringify(myObj);
     localStorage.setItem("Highscore", myJSON);
@@ -184,61 +187,62 @@ function draw() {
     if (tempX1 > 278 && tempX1 < 494 && tempY1 > 321 && tempY1 < 502) {
       if (pntsCntTiger < 2200) {
         //tiger shalgah
-        if (!points.includes([tempX1, tempY1])) {
-          points.push([tempX1, tempY1]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX1 - dSize, tempY1])) {
-          points.push([tempX1 - dSize, tempY1]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX1 + dSize, tempY1])) {
-          points.push([tempX1 + dSize, tempY1]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX1, tempY1 - dSize])) {
-          points.push([tempX1, tempY1 - dSize]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX1, tempY1 + dSize])) {
-          points.push([tempX1, tempY1 + dSize]);
-          pntsCntTiger++;
-        }
+        //if (!points.includes([tempX1, tempY1])) {
+        points.push([tempX1, tempY1]);
+        pntsCntTiger++;
+        //}
+        // if (!points.includes([tempX1 - dSize, tempY1])) {
+        points.push([tempX1 - dSize, tempY1]);
+        pntsCntTiger++;
+        //}
+        // if (!points.includes([tempX1 + dSize, tempY1])) {
+        points.push([tempX1 + dSize, tempY1]);
+        pntsCntTiger++;
+        //}
+        // if (!points.includes([tempX1, tempY1 - dSize])) {
+        points.push([tempX1, tempY1 - dSize]);
+        pntsCntTiger++;
+        // }
+        // if (!points.includes([tempX1, tempY1 + dSize])) {
+        points.push([tempX1, tempY1 + dSize]);
+        pntsCntTiger++;
+        // }
       }
     } else if (tempX1 > 533 && tempX1 < 736 && tempY1 > 202 && tempY1 < 489) {
       // parrot shalgah
       if (pntsCntParrot < 2800) {
-        if (!points.includes([tempX1, tempY1])) {
-          points.push([tempX1, tempY1]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX1 - dSize, tempY1])) {
-          points.push([tempX1 - dSize, tempY1]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX1 + dSize, tempY1])) {
-          points.push([tempX1 + dSize, tempY1]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX1, tempY1 - dSize])) {
-          points.push([tempX1, tempY1 - dSize]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX1, tempY1 + dSize])) {
-          points.push([tempX1, tempY1 + dSize]);
-          pntsCntParrot++;
-        }
+        //  if (!points.includes([tempX1, tempY1])) {
+        points.push([tempX1, tempY1]);
+        pntsCntParrot++;
+        //    }
+        //   if (!points.includes([tempX1 - dSize, tempY1])) {
+        points.push([tempX1 - dSize, tempY1]);
+        pntsCntParrot++;
+        // }
+        // if (!points.includes([tempX1 + dSize, tempY1])) {
+        points.push([tempX1 + dSize, tempY1]);
+        pntsCntParrot++;
+        // }
+        // if (!points.includes([tempX1, tempY1 - dSize])) {
+        points.push([tempX1, tempY1 - dSize]);
+        pntsCntParrot++;
+        // }
+        // if (!points.includes([tempX1, tempY1 + dSize])) {
+        points.push([tempX1, tempY1 + dSize]);
+        pntsCntParrot++;
+        // }
       }
     } else {
-      if (!points.includes([tempX1, tempY1])) points.push([tempX1, tempY1]);
-      if (!points.includes([tempX1 - dSize, tempY1]))
-        points.push([tempX1 - dSize, tempY1]);
-      if (!points.includes([tempX1 + dSize, tempY1]))
-        points.push([tempX1 + dSize, tempY1]);
-      if (!points.includes([tempX1, tempY1 - dSize]))
-        points.push([tempX1, tempY1 - dSize]);
-      if (!points.includes([tempX1, tempY1 + dSize]))
-        points.push([tempX1, tempY1 + dSize]);
+      // if (!points.includes([tempX1, tempY1]))
+      points.push([tempX1, tempY1]);
+      // if (!points.includes([tempX1 - dSize, tempY1]))
+      points.push([tempX1 - dSize, tempY1]);
+      // if (!points.includes([tempX1 + dSize, tempY1]))
+      points.push([tempX1 + dSize, tempY1]);
+      // if (!points.includes([tempX1, tempY1 - dSize]))
+      points.push([tempX1, tempY1 - dSize]);
+      // if (!points.includes([tempX1, tempY1 + dSize]))
+      points.push([tempX1, tempY1 + dSize]);
     }
   }
   if (xCord2 != null && yCord2 != null) {
@@ -247,66 +251,77 @@ function draw() {
     if (tempX2 > 278 && tempX2 < 494 && tempY2 > 321 && tempY2 < 502) {
       if (pntsCntTiger < 2200) {
         // TIGER shalgah heseg
-        if (!points.includes([tempX2, tempY2])) {
-          points.push([tempX2, tempY2]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX2 - dSize, tempY2])) {
-          points.push([tempX2 - dSize, tempY2]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX2 + dSize, tempY2])) {
-          points.push([tempX2 + dSize, tempY2]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX2, tempY2 - dSize])) {
-          points.push([tempX2, tempY2 - dSize]);
-          pntsCntTiger++;
-        }
-        if (!points.includes([tempX2, tempY2 + dSize])) {
-          points.push([tempX2, tempY2 + dSize]);
-          pntsCntTiger++;
-        }
+        // if (!points.includes([tempX2, tempY2])) {
+        points.push([tempX2, tempY2]);
+        pntsCntTiger++;
+        // }
+        // if (!points.includes([tempX2 - dSize, tempY2])) {
+        points.push([tempX2 - dSize, tempY2]);
+        pntsCntTiger++;
+        // }
+        // if (!points.includes([tempX2 + dSize, tempY2])) {
+        points.push([tempX2 + dSize, tempY2]);
+        pntsCntTiger++;
+        // }
+        // if (!points.includes([tempX2, tempY2 - dSize])) {
+        points.push([tempX2, tempY2 - dSize]);
+        pntsCntTiger++;
+        // }
+        // if (!points.includes([tempX2, tempY2 + dSize])) {
+        points.push([tempX2, tempY2 + dSize]);
+        pntsCntTiger++;
+        // }
       }
     } else if (tempX2 > 533 && tempX2 < 736 && tempY2 > 202 && tempY2 < 489) {
       // PARROT shalgah
       if (pntsCntParrot < 2800) {
-        if (!points.includes([tempX2, tempY2])) {
-          points.push([tempX2, tempY2]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX2 - dSize, tempY2])) {
-          points.push([tempX2 - dSize, tempY2]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX2 + dSize, tempY2])) {
-          points.push([tempX2 + dSize, tempY2]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX2, tempY2 - dSize])) {
-          points.push([tempX2, tempY2 - dSize]);
-          pntsCntParrot++;
-        }
-        if (!points.includes([tempX2, tempY2 + dSize])) {
-          points.push([tempX2, tempY2 + dSize]);
-          pntsCntParrot++;
-        }
+        // if (!points.includes([tempX2, tempY2])) {
+        points.push([tempX2, tempY2]);
+        pntsCntParrot++;
+        // }
+        // if (!points.includes([tempX2 - dSize, tempY2])) {
+        points.push([tempX2 - dSize, tempY2]);
+        pntsCntParrot++;
+        // }
+        // if (!points.includes([tempX2 + dSize, tempY2])) {
+        points.push([tempX2 + dSize, tempY2]);
+        pntsCntParrot++;
+        // }
+        // if (!points.includes([tempX2, tempY2 - dSize])) {
+        points.push([tempX2, tempY2 - dSize]);
+        pntsCntParrot++;
+        // }
+        // if (!points.includes([tempX2, tempY2 + dSize])) {
+        points.push([tempX2, tempY2 + dSize]);
+        pntsCntParrot++;
+        // }
       }
     } else {
-      if (!points.includes([tempX2, tempY2])) points.push([tempX2, tempY2]);
-      if (!points.includes([tempX2 - dSize, tempY2]))
-        points.push([tempX2 - dSize, tempY2]);
-      if (!points.includes([tempX2 + dSize, tempY2]))
-        points.push([tempX2 + dSize, tempY2]);
-      if (!points.includes([tempX2, tempY2 - dSize]))
-        points.push([tempX2, tempY2 - dSize]);
-      if (!points.includes([tempX2, tempY2 + dSize]))
-        points.push([tempX2, tempY2 + dSize]);
+      // if (!points.includes([tempX2, tempY2]))
+      points.push([tempX2, tempY2]);
+      // if (!points.includes([tempX2 - dSize, tempY2]))
+      points.push([tempX2 - dSize, tempY2]);
+      // if (!points.includes([tempX2 + dSize, tempY2]))
+      points.push([tempX2 + dSize, tempY2]);
+      // if (!points.includes([tempX2, tempY2 - dSize]))
+      points.push([tempX2, tempY2 - dSize]);
+      // if (!points.includes([tempX2, tempY2 + dSize]))
+      points.push([tempX2, tempY2 + dSize]);
     }
   }
   //2 secondiin daraa 10 tseg ustgah
   if (counter == countTimeBy2sec) {
-    if (points.length > 10) {
+    if (points.length > 20) {
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
+      points.shift();
       points.shift();
       points.shift();
       points.shift();
@@ -348,6 +363,8 @@ function draw() {
     );
   }
   image(buffer, 0, 0);
+  if (tigerBool) image(tigerPng, 0, 0);
+  if (parrotBool) image(parrotPng, 0, 0);
   buffer.clear();
   noFill();
   if (xCord != null && yCord != null) {
