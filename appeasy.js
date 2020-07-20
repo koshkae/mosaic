@@ -31,7 +31,6 @@ var pntsCntTiger = 0,
   toysCnt = 0;
 let tigerBool = false,
   parrotBool = false;
-let tigerPng, parrotPng;
 var userName;
 let checked = true;
 var counter = 0;
@@ -118,8 +117,6 @@ function runDetection() {
 var delaunay;
 function preload() {
   img = loadImage("imgs/easy01.jpg");
-  tigerPng = loadImage("pngs/easy1.png");
-  parrotPng = loadImage("pngs/easy2.png");
   if (localStorage.getItem("Highscore") === null) {
     myJSON = JSON.stringify(myObj);
     localStorage.setItem("Highscore", myJSON);
@@ -136,7 +133,7 @@ function preload() {
 function convertSeconds(s) {
   var min = floor(s / 60);
   var sec = s % 60;
-  return "Timer: " + nf(min, 2) + ":" + nf(sec, 2);
+  return "Timer:<br />" + nf(min, 2) + ":" + nf(sec, 2);
 }
 
 function convertSeconds1(s) {
@@ -363,8 +360,14 @@ function draw() {
     );
   }
   image(buffer, 0, 0);
-  if (tigerBool) image(tigerPng, 0, 0);
-  if (parrotBool) image(parrotPng, 0, 0);
+  if (tigerBool) {
+    document.getElementById("tiger").src = "pngs/easy11.png";
+    document.getElementById("tiger").style.backgroundColor = "rgb(242, 92, 5)";
+  }
+  if (parrotBool) {
+    document.getElementById("parrot").src = "pngs/easy22.png";
+    document.getElementById("parrot").style.backgroundColor = "rgb(242, 92, 5)";
+  }
   buffer.clear();
   noFill();
   if (xCord != null && yCord != null) {
@@ -374,7 +377,7 @@ function draw() {
     ellipse(tempX2, tempY2, width / 12);
   }
   // console.log(points.length);  tsegiin toog hevlej harah
-  document.getElementById("p1").innerHTML = "Toys: " + toysCnt + "/2";
+  document.getElementById("p1").innerHTML = "Toys:<br />" + toysCnt + "/2";
   let htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
   txtFromLocal = localStorage.getItem("Highscore");
   obj = JSON.parse(txtFromLocal);

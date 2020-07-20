@@ -139,7 +139,7 @@ function preload() {
 function convertSeconds(s) {
   var min = floor(s / 60);
   var sec = s % 60;
-  return "Timer: " + nf(min, 2) + ":" + nf(sec, 2);
+  return "Timer:<br />" + nf(min, 2) + ":" + nf(sec, 2);
 }
 
 function convertSeconds1(s) {
@@ -568,6 +568,33 @@ function draw() {
     );
   }
   image(buffer, 0, 0);
+  if (tigerBool) {
+    document.getElementById("tiger").src = "pngs/many66.png";
+    document.getElementById("tiger").style.backgroundColor = "rgb(242, 92, 5)";
+  }
+  if (parrotBool) {
+    document.getElementById("parrot").src = "pngs/many33.png";
+    document.getElementById("parrot").style.backgroundColor = "rgb(242, 92, 5)";
+  }
+  if (carBool) {
+    document.getElementById("raceCar").src = "pngs/many11.png";
+    document.getElementById("raceCar").style.backgroundColor =
+      "rgb(242, 92, 5)";
+  }
+  if (heliBool) {
+    document.getElementById("helicopter").src = "pngs/many44.png";
+    document.getElementById("helicopter").style.backgroundColor =
+      "rgb(242, 92, 5)";
+  }
+  if (planeBool) {
+    document.getElementById("plane").src = "pngs/many55.png";
+    document.getElementById("plane").style.backgroundColor = "rgb(242, 92, 5)";
+  }
+  if (flamingoBool) {
+    document.getElementById("flamingo").src = "pngs/many22.png";
+    document.getElementById("flamingo").style.backgroundColor =
+      "rgb(242, 92, 5)";
+  }
   buffer.clear();
   noFill();
   if (xCord != null && yCord != null) {
@@ -578,7 +605,7 @@ function draw() {
   }
   // console.log(points.length);  tsegiin toog hevlej harah
 
-  document.getElementById("p1").innerHTML = "Toys: " + toysCnt + "/6";
+  document.getElementById("p1").innerHTML = "Toys:<br />" + toysCnt + "/6";
   let htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
 
   txtFromLocal = localStorage.getItem("Highscore");
