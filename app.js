@@ -516,10 +516,10 @@ function draw() {
       myObj.score[num].level = obj.score[num].level;
       myObj.score[num].sec = obj.score[num].sec;
     }
+    hsDom.innerHTML = "<table>" + htTxt + "</table>";
     highscoreUpdate = false;
   }
 
-  hsDom.innerHTML = "<table>" + htTxt + "</table>";
   if (toysCnt == 4) {
     for (var num = 0; num < 9; num++) {
       if (checked) {
