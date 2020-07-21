@@ -52,7 +52,11 @@ let renderVideo = true,
   videoLoaded = false;
 let model = null;
 let xCord, yCord, xCord2, yCord2;
-let dSize = 4;
+let dSize = 4,
+  htTxt,
+  toyUpdate = false,
+  highscoreUpdate = true;
+var hsDom, p1Dom;
 window.onload = function () {
   var txt;
   var person = prompt("Please enter your name:", "Guest");
@@ -148,6 +152,8 @@ function convertSeconds1(s) {
   return nf(min, 2) + ":" + nf(sec, 2);
 }
 function setup() {
+  hsDom = document.getElementById("highscore");
+  p1Dom = document.getElementById("p1");
   buffer = createGraphics(img.width, img.height);
   let cnv = createCanvas(img.width, img.height);
   cnv.parent("myContainer");
@@ -520,41 +526,42 @@ function draw() {
 
   if (pntsCntCar == 1000 && !carBool) {
     toysCnt++;
+    toyUpdate = true;
     carBool = true;
-    s = "You have just found a CAR :D";
   }
   if (pntsCntHeli == 1500 && !heliBool) {
     toysCnt++;
+    toyUpdate = true;
     heliBool = true;
-    s = "You have just found a HELICOPTER :D";
   }
 
   if (pntsCntPlane == 1500 && !planeBool) {
     toysCnt++;
+    toyUpdate = true;
     planeBool = true;
-    s = "You have just found a PLANE :D";
   }
   if (pntsCntFlamingo == 1500 && !flamingoBool) {
     toysCnt++;
+    toyUpdate = true;
     flamingoBool = true;
-    s = "You have just found a FLAMINGO :D";
   }
 
   if (pntsCntTiger == 1000 && !tigerBool) {
     toysCnt++;
+    toyUpdate = true;
     tigerBool = true;
-    s = "You have just found a TIGER :D";
   }
   if (pntsCntParrot == 800 && !parrotBool) {
     toysCnt++;
+    toyUpdate = true;
     parrotBool = true;
-    s = "You have just found a PARROT :D";
   }
   delaunay = Delaunator.from(points);
 
   var triangles = delaunay.triangles;
   buffer.noStroke();
-  for (let i = 0; i < triangles.length; i += 3) {
+  var lll = triangles.length;
+  for (let i = 0; i < lll; i += 3) {
     var ii = points[triangles[i]][0];
     var jj = points[triangles[i]][1];
     buffer.fill(pix[ii * img.height + jj]);
@@ -603,33 +610,35 @@ function draw() {
   if (xCord2 != null && yCord2 != null) {
     ellipse(tempX2, tempY2, width / 12);
   }
-  // console.log(points.length);  tsegiin toog hevlej harah
-
-  document.getElementById("p1").innerHTML = "Toys:<br />" + toysCnt + "/6";
-  let htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
-
-  txtFromLocal = localStorage.getItem("Highscore");
-  obj = JSON.parse(txtFromLocal);
-  for (var num = 0; num < 9; num++) {
-    htTxt =
-      htTxt +
-      "<tr><td id='num'>" +
-      (num + 1) +
-      "</td><td>" +
-      obj.score[num].name +
-      "</td><td>" +
-      obj.score[num].time +
-      "</td><td>" +
-      obj.score[num].level +
-      "</td></tr>";
-    myObj.score[num].name = obj.score[num].name;
-    myObj.score[num].time = obj.score[num].time;
-    myObj.score[num].level = obj.score[num].level;
-    myObj.score[num].sec = obj.score[num].sec;
+  if (toyUpdate) {
+    p1Dom.innerHTML = "Toys:<br />" + toysCnt + "/6";
+    toyUpdate = false;
   }
+  if (highscoreUpdate) {
+    htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
+    txtFromLocal = localStorage.getItem("Highscore");
+    obj = JSON.parse(txtFromLocal);
+    for (var num = 0; num < 9; num++) {
+      htTxt =
+        htTxt +
+        "<tr><td id='num'>" +
+        (num + 1) +
+        "</td><td>" +
+        obj.score[num].name +
+        "</td><td>" +
+        obj.score[num].time +
+        "</td><td>" +
+        obj.score[num].level +
+        "</td></tr>";
+      myObj.score[num].name = obj.score[num].name;
+      myObj.score[num].time = obj.score[num].time;
+      myObj.score[num].level = obj.score[num].level;
+      myObj.score[num].sec = obj.score[num].sec;
+    }
 
-  document.getElementById("highscore").innerHTML =
-    "<table>" + htTxt + "</table>";
+    hsDom.innerHTML = "<table>" + htTxt + "</table>";
+    highscoreUpdate = false;
+  }
   if (toysCnt == 6) {
     for (var num = 0; num < 9; num++) {
       if (checked) {
@@ -653,6 +662,7 @@ function draw() {
         }
       }
     }
+    highscoreUpdate = true;
   }
   fill(242, 92, 5);
   text(s, 10, 10, 700, 80); // Text wraps within text box

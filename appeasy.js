@@ -33,18 +33,26 @@ let tigerBool = false,
   parrotBool = false;
 var userName;
 let checked = true;
-var counter = 0;
-var timeLeft = 120;
-var countTimeBy2sec = 12;
-var output, txtFromLocal, obj;
-let img, s;
+var counter = 0,
+  timeLeft = 120,
+  countTimeBy2sec = 12,
+  output,
+  txtFromLocal,
+  obj;
+let img,
+  s,
+  placeNum = 0;
 let pix = [];
 var buffer, videoCanvas;
 let renderVideo = true,
   videoLoaded = false;
 let model = null;
 let xCord, yCord, xCord2, yCord2;
-let dSize = 4;
+let dSize = 4,
+  htTxt,
+  toyUpdate = false,
+  highscoreUpdate = true;
+var hsDom, p1Dom;
 
 window.onload = function () {
   var txt;
@@ -142,6 +150,9 @@ function convertSeconds1(s) {
   return nf(min, 2) + ":" + nf(sec, 2);
 }
 function setup() {
+  hsDom = document.getElementById("highscore");
+  p1Dom = document.getElementById("p1");
+
   buffer = createGraphics(img.width, img.height);
   let cnv = createCanvas(img.width, img.height);
   cnv.parent("myContainer");
@@ -334,19 +345,19 @@ function draw() {
   }
   if (pntsCntTiger == 2200 && !tigerBool) {
     toysCnt++;
+    toyUpdate = true;
     tigerBool = true;
-    s = "You have just found a TIGER :D";
   }
   if (pntsCntParrot == 2800 && !parrotBool) {
     toysCnt++;
+    toyUpdate = true;
     parrotBool = true;
-    s = "You have just found a PARROT :D";
   }
   delaunay = Delaunator.from(points);
   var triangles = delaunay.triangles;
   buffer.noStroke();
-
-  for (let i = 0; i < triangles.length; i += 3) {
+  var lll = triangles.length;
+  for (let i = 0; i < lll; i += 3) {
     var ii = points[triangles[i]][0];
     var jj = points[triangles[i]][1];
     buffer.fill(pix[ii * img.height + jj]);
@@ -376,37 +387,41 @@ function draw() {
   if (xCord2 != null && yCord2 != null) {
     ellipse(tempX2, tempY2, width / 12);
   }
-  // console.log(points.length);  tsegiin toog hevlej harah
-  document.getElementById("p1").innerHTML = "Toys:<br />" + toysCnt + "/2";
-  let htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
-  txtFromLocal = localStorage.getItem("Highscore");
-  obj = JSON.parse(txtFromLocal);
-  for (var num = 0; num < 9; num++) {
-    htTxt =
-      htTxt +
-      "<tr><td id='num'>" +
-      (num + 1) +
-      "</td><td>" +
-      obj.score[num].name +
-      "</td><td>" +
-      obj.score[num].time +
-      "</td><td>" +
-      obj.score[num].level +
-      "</td></tr>";
-    myObj.score[num].name = obj.score[num].name;
-    myObj.score[num].time = obj.score[num].time;
-    myObj.score[num].level = obj.score[num].level;
-    myObj.score[num].sec = obj.score[num].sec;
+  if (toyUpdate) {
+    p1Dom.innerHTML = "Toys:<br />" + toysCnt + "/2";
+    toyUpdate = false;
   }
-  //   console.log(txtFromLocal);
-  document.getElementById("highscore").innerHTML =
-    "<table>" + htTxt + "</table>";
+  if (highscoreUpdate) {
+    htTxt = "<tr><th>#</th><th>Name</th><th>Time</th><th>Level</th></tr>";
+    txtFromLocal = localStorage.getItem("Highscore");
+    obj = JSON.parse(txtFromLocal);
+    for (var num = 0; num < 9; num++) {
+      htTxt =
+        htTxt +
+        "<tr><td id='num'>" +
+        (num + 1) +
+        "</td><td>" +
+        obj.score[num].name +
+        "</td><td>" +
+        obj.score[num].time +
+        "</td><td>" +
+        obj.score[num].level +
+        "</td></tr>";
+      myObj.score[num].name = obj.score[num].name;
+      myObj.score[num].time = obj.score[num].time;
+      myObj.score[num].level = obj.score[num].level;
+      myObj.score[num].sec = obj.score[num].sec;
+    }
+    hsDom.innerHTML = "<table>" + htTxt + "</table>";
+    highscoreUpdate = false;
+  }
+
   if (toysCnt == 2) {
     for (var num = 0; num < 9; num++) {
       if (checked) {
         //console.log(obj.score.length);
-        console.log(int(obj.score[num].sec));
-        console.log(counter);
+        // console.log(int(obj.score[num].sec));
+        // console.log(counter);
         if (counter < int(obj.score[num].sec)) {
           let tempObj = obj;
           if (num + 1 < 9) {
@@ -427,6 +442,7 @@ function draw() {
         }
       }
     }
+    highscoreUpdate = true;
   }
   fill(242, 92, 5);
   text(s, 10, 10, 700, 80); // Text wraps within text box
