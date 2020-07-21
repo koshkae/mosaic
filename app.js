@@ -169,10 +169,10 @@ function setup() {
 
       var realImg = document.createElement("IMG");
       realImg.setAttribute("src", "imgs/redtoys.jpg");
-      realImg.setAttribute("id", "gameover1");
+      realImg.setAttribute("width", "296");
 
       document.body.appendChild(go);
-      document.body.appendChild(realImg);
+      document.getElementById("pic").appendChild(realImg);
     }
   }
   for (let i = 0; i < img.width; i++) {

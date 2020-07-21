@@ -82,11 +82,13 @@ table th {
 
 #gameover {
   position: absolute;
-  width: 70%;
-  top: 20%;
-  left: 15%;
+  width: 45%;
+  top: 3%;
+  left: 20%;
 }
-
+#pic {
+  border: 2px solid white;
+}
 #gameover1 {
   position: absolute;
   border: 5px solid white;
