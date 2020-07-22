@@ -441,6 +441,7 @@ function draw() {
           checked = false;
         }
       }
+      if (num == 8) checked = false;
     }
     highscoreUpdate = true;
   }
