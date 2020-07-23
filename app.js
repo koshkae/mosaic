@@ -53,6 +53,27 @@ let dSize = 4,
   toyUpdate = false,
   highscoreUpdate = true;
 var hsDom, p1Dom;
+
+var TIX = 830,
+  TIY = 274,
+  TIW = 1024,
+  TIH = 447;
+var PAX = 508,
+  PAY = 134,
+  PAW = 668,
+  PAH = 413;
+var HEX = 55,
+  HEY = 276,
+  HEW = 409,
+  HEH = 462;
+var RAX = 418,
+  RAY = 403,
+  RAW = 761,
+  RAH = 556;
+var TIGERNUMBER = 1500,
+  PARROTNUMBER = 2300,
+  HELINUMBER = 3000,
+  RACENUMBER = 2500;
 window.onload = function () {
   var txt;
   var person = prompt("Please enter your name:", "Guest");
@@ -142,7 +163,6 @@ function convertSeconds(s) {
   var sec = s % 60;
   return "Timer:<br />" + nf(min, 2) + ":" + nf(sec, 2);
 }
-
 function convertSeconds1(s) {
   var min = floor(s / 60);
   var sec = s % 60;
@@ -184,14 +204,12 @@ function setup() {
 }
 function draw() {
   background(204);
-
   var tempX1, tempX2, tempY1, tempY2;
-
   if (xCord != null && yCord != null) {
     tempX1 = int(map(xCord, 0, video.width, 0, img.width));
     tempY1 = int(map(yCord, 0, video.height, 0, img.height));
-    if (tempX1 > 418 && tempX1 < 761 && tempY1 > 403 && tempY1 < 556) {
-      if (pntsCntCar < 2500) {
+    if (tempX1 > RAX && tempX1 < RAY && tempY1 > RAW && tempY1 < RAH) {
+      if (pntsCntCar < RACENUMBER) {
         //car shalgah
         if (!points.includes([tempX1, tempY1])) {
           points.push([tempX1, tempY1]);
@@ -214,9 +232,9 @@ function draw() {
           pntsCntCar++;
         }
       }
-    } else if (tempX1 > 830 && tempX1 < 1024 && tempY1 > 274 && tempY1 < 447) {
+    } else if (tempX1 > TIX && tempX1 < TIY && tempY1 > TIW && tempY1 < TIH) {
       // tiger shalgah
-      if (pntsCntTiger < 1500) {
+      if (pntsCntTiger < TIGERNUMBER) {
         if (!points.includes([tempX1, tempY1])) {
           points.push([tempX1, tempY1]);
           pntsCntTiger++;
@@ -238,9 +256,9 @@ function draw() {
           pntsCntTiger++;
         }
       }
-    } else if (tempX1 > 55 && tempX1 < 409 && tempY1 > 276 && tempY1 < 462) {
+    } else if (tempX1 > HEX && tempX1 < HEY && tempY1 > HEW && tempY1 < HEH) {
       //helicopter shalgah
-      if (pntsCntHeli < 3000) {
+      if (pntsCntHeli < HELINUMBER) {
         if (!points.includes([tempX1, tempY1])) {
           points.push([tempX1, tempY1]);
           pntsCntHeli++;
@@ -262,9 +280,9 @@ function draw() {
           pntsCntHeli++;
         }
       }
-    } else if (tempX1 > 508 && tempX1 < 668 && tempY1 > 134 && tempY1 < 413) {
+    } else if (tempX1 > PAX && tempX1 < PAY && tempY1 > PAW && tempY1 < PAH) {
       // parrot shalgah
-      if (pntsCntParrot < 2300) {
+      if (pntsCntParrot < PARROTNUMBER) {
         if (!points.includes([tempX1, tempY1])) {
           points.push([tempX1, tempY1]);
           pntsCntParrot++;
@@ -301,8 +319,8 @@ function draw() {
   if (xCord2 != null && yCord2 != null) {
     tempX2 = int(map(xCord2, 0, video.width, 0, img.width));
     tempY2 = int(map(yCord2, 0, video.height, 0, img.height));
-    if (tempX2 > 418 && tempX2 < 761 && tempY2 > 403 && tempY2 < 556) {
-      if (pntsCntCar < 2500) {
+    if (tempX2 > RAX && tempX2 < RAY && tempY2 > RAW && tempY2 < RAH) {
+      if (pntsCntCar < RACENUMBER) {
         // car shalgah heseg
         if (!points.includes([tempX2, tempY2])) {
           points.push([tempX2, tempY2]);
@@ -325,9 +343,9 @@ function draw() {
           pntsCntCar++;
         }
       }
-    } else if (tempX2 > 830 && tempX2 < 1024 && tempY2 > 274 && tempY2 < 447) {
+    } else if (tempX2 > TIX && tempX2 < TIY && tempY2 > TIW && tempY2 < TIH) {
       // tiger shalgah
-      if (pntsCntTiger < 1500) {
+      if (pntsCntTiger < TIGERNUMBER) {
         if (!points.includes([tempX2, tempY2])) {
           points.push([tempX2, tempY2]);
           pntsCntTiger++;
@@ -349,9 +367,9 @@ function draw() {
           pntsCntTiger++;
         }
       }
-    } else if (tempX2 > 55 && tempX2 < 409 && tempY2 > 276 && tempY2 < 462) {
+    } else if (tempX2 > HEX && tempX2 < HEY && tempY2 > HEW && tempY2 < HEH) {
       //helicopter shalgah
-      if (pntsCntHeli < 3000) {
+      if (pntsCntHeli < HELINUMBER) {
         if (!points.includes([tempX2, tempY2])) {
           points.push([tempX2, tempY2]);
           pntsCntHeli++;
@@ -373,9 +391,9 @@ function draw() {
           pntsCntHeli++;
         }
       }
-    } else if (tempX2 > 508 && tempX2 < 668 && tempY2 > 134 && tempY2 < 413) {
+    } else if (tempX2 > PAX && tempX2 < PAY && tempY2 > PAW && tempY2 < PAH) {
       // parrot shalgah
-      if (pntsCntParrot < 2300) {
+      if (pntsCntParrot < PARROTNUMBER) {
         if (!points.includes([tempX2, tempY2])) {
           points.push([tempX2, tempY2]);
           pntsCntParrot++;
@@ -426,22 +444,22 @@ function draw() {
     countTimeBy2sec = countTimeBy2sec + 1;
   }
 
-  if (pntsCntCar == 2500 && !carBool) {
+  if (pntsCntCar == RACENUMBER && !carBool) {
     toysCnt++;
     toyUpdate = true;
     carBool = true;
   }
-  if (pntsCntTiger == 1500 && !tigerBool) {
+  if (pntsCntTiger == TIGERNUMBER && !tigerBool) {
     toysCnt++;
     toyUpdate = true;
     tigerBool = true;
   }
-  if (pntsCntHeli == 3000 && !heliBool) {
+  if (pntsCntHeli == HELINUMBER && !heliBool) {
     toysCnt++;
     toyUpdate = true;
     heliBool = true;
   }
-  if (pntsCntParrot == 2300 && !parrotBool) {
+  if (pntsCntParrot == PARROTNUMBER && !parrotBool) {
     toysCnt++;
     toyUpdate = true;
     parrotBool = true;
@@ -557,8 +575,8 @@ function mouseDragged() {
     mouseY <= buffer.height - dSize &&
     mouseY >= dSize
   ) {
-    if (mouseX > 418 && mouseX < 761 && mouseY > 403 && mouseY < 556) {
-      if (pntsCntCar < 2500) {
+    if (mouseX > RAX && mouseX < RAY && mouseY > RAW && mouseY < RAH) {
+      if (pntsCntCar < RACENUMBER) {
         // car shalgah heseg
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
@@ -581,9 +599,9 @@ function mouseDragged() {
           pntsCntCar++;
         }
       }
-    } else if (mouseX > 830 && mouseX < 1024 && mouseY > 274 && mouseY < 447) {
+    } else if (mouseX > TIX && mouseX < TIY && mouseY > TIW && mouseY < TIH) {
       // tiger shalgah
-      if (pntsCntTiger < 1500) {
+      if (pntsCntTiger < TIGERNUMBER) {
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
           pntsCntTiger++;
@@ -605,9 +623,9 @@ function mouseDragged() {
           pntsCntTiger++;
         }
       }
-    } else if (mouseX > 55 && mouseX < 409 && mouseY > 276 && mouseY < 462) {
+    } else if (mouseX > HEX && mouseX < HEY && mouseY > HEW && mouseY < HEH) {
       //helicopter shalgah
-      if (pntsCntHeli < 3000) {
+      if (pntsCntHeli < HELINUMBER) {
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
           pntsCntHeli++;
@@ -629,9 +647,9 @@ function mouseDragged() {
           pntsCntHeli++;
         }
       }
-    } else if (mouseX > 508 && mouseX < 668 && mouseY > 134 && mouseY < 413) {
+    } else if (mouseX > PAX && mouseX < PAY && mouseY > PAW && mouseY < PAH) {
       // parrot shalgah
-      if (pntsCntParrot < 2300) {
+      if (pntsCntParrot < PARROTNUMBER) {
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
           pntsCntParrot++;

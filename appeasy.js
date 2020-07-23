@@ -53,6 +53,16 @@ let dSize = 4,
   toyUpdate = false,
   highscoreUpdate = true;
 var hsDom, p1Dom;
+var TIX = 278,
+  TIY = 321,
+  TIW = 494,
+  TIH = 502;
+var PAX = 533,
+  PAY = 202,
+  PAW = 736,
+  PAH = 489;
+var TIGERNUMBER = 2200,
+  PARROTNUMBER = 2800;
 
 window.onload = function () {
   var txt;
@@ -187,13 +197,12 @@ function setup() {
 
 function draw() {
   background(204);
-
   var tempX1, tempX2, tempY1, tempY2;
   if (xCord != null && yCord != null) {
     tempX1 = int(map(xCord, 0, video.width, 0, img.width));
     tempY1 = int(map(yCord, 0, video.height, 0, img.height));
-    if (tempX1 > 278 && tempX1 < 494 && tempY1 > 321 && tempY1 < 502) {
-      if (pntsCntTiger < 2200) {
+    if (tempX1 > TIX && tempX1 < TIW && tempY1 > TIY && tempY1 < TIH) {
+      if (pntsCntTiger < TIGERNUMBER) {
         //tiger shalgah
         //if (!points.includes([tempX1, tempY1])) {
         points.push([tempX1, tempY1]);
@@ -216,9 +225,9 @@ function draw() {
         pntsCntTiger++;
         // }
       }
-    } else if (tempX1 > 533 && tempX1 < 736 && tempY1 > 202 && tempY1 < 489) {
+    } else if (tempX1 > PAX && tempX1 < PAW && tempY1 > PAY && tempY1 < PAH) {
       // parrot shalgah
-      if (pntsCntParrot < 2800) {
+      if (pntsCntParrot < parrotBool) {
         //  if (!points.includes([tempX1, tempY1])) {
         points.push([tempX1, tempY1]);
         pntsCntParrot++;
@@ -256,8 +265,8 @@ function draw() {
   if (xCord2 != null && yCord2 != null) {
     tempX2 = int(map(xCord2, 0, video.width, 0, img.width));
     tempY2 = int(map(yCord2, 0, video.height, 0, img.height));
-    if (tempX2 > 278 && tempX2 < 494 && tempY2 > 321 && tempY2 < 502) {
-      if (pntsCntTiger < 2200) {
+    if (tempX2 > TIX && tempX2 < TIW && tempY2 > TIY && tempY2 < TIH) {
+      if (pntsCntTiger < TIGERNUMBER) {
         // TIGER shalgah heseg
         // if (!points.includes([tempX2, tempY2])) {
         points.push([tempX2, tempY2]);
@@ -280,9 +289,9 @@ function draw() {
         pntsCntTiger++;
         // }
       }
-    } else if (tempX2 > 533 && tempX2 < 736 && tempY2 > 202 && tempY2 < 489) {
+    } else if (tempX2 > PAX && tempX2 < PAW && tempY2 > PAY && tempY2 < PAH) {
       // PARROT shalgah
-      if (pntsCntParrot < 2800) {
+      if (pntsCntParrot < PARROTNUMBER) {
         // if (!points.includes([tempX2, tempY2])) {
         points.push([tempX2, tempY2]);
         pntsCntParrot++;
@@ -343,12 +352,12 @@ function draw() {
     }
     countTimeBy2sec = countTimeBy2sec + 1;
   }
-  if (pntsCntTiger == 2200 && !tigerBool) {
+  if (pntsCntTiger == TIGERNUMBER && !tigerBool) {
     toysCnt++;
     toyUpdate = true;
     tigerBool = true;
   }
-  if (pntsCntParrot == 2800 && !parrotBool) {
+  if (pntsCntParrot == PARROTNUMBER && !parrotBool) {
     toysCnt++;
     toyUpdate = true;
     parrotBool = true;
@@ -456,8 +465,8 @@ function mouseDragged() {
     mouseY <= buffer.height - dSize &&
     mouseY >= dSize
   ) {
-    if (mouseX > 278 && mouseX < 494 && mouseY > 321 && mouseY < 502) {
-      if (pntsCntTiger < 2200) {
+    if (mouseX > TIX && mouseX < TIW && mouseY > TIY && mouseY < TIH) {
+      if (pntsCntTiger < TIGERNUMBER) {
         // TIGER shalgah heseg
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
@@ -480,9 +489,9 @@ function mouseDragged() {
           pntsCntTiger++;
         }
       }
-    } else if (mouseX > 533 && mouseX < 736 && mouseY > 202 && mouseY < 489) {
+    } else if (mouseX > PAX && mouseX < PAW && mouseY > PAY && mouseY < PAH) {
       // PARROT shalgah
-      if (pntsCntParrot < 2800) {
+      if (pntsCntParrot < PARROTNUMBER) {
         if (!points.includes([mouseX, mouseY])) {
           points.push([mouseX, mouseY]);
           pntsCntParrot++;
